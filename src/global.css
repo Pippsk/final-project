@@ -1,0 +1,20 @@
+:root {
+  --white: #fff;
+  --green-1: #386641;
+  --green-2: #6a994e;
+  --green-3: #a7c957;
+  --beige: #f2e8cf;
+  --dark-red: #bc4749;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}

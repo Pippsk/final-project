@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Andrei",
+      "lastName": "Popescu",
+      "email": "popescu@yahoo.com",
+      "password": "blabla"
+    },
+    {
+      "email": "tud@yahoo.com",
+      "password": "$2a$10$hFQnO8pjN5RE8cqqBUNTeOhxbhJUnqdbZYtciqfFgnKymd0Gz0c72",
+      "firstName": "Sergiu",
+      "lastName": "Tud",
+      "retypePassword": "alabala",
+      "phone": "0726384934",
+      "id": 2
+    }
+  ]
+}
