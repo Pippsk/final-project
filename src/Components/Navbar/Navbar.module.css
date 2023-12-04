@@ -50,9 +50,9 @@ li {
 
 .buttons_container {
   display: flex;
+  align-items: center;
   gap: 1rem;
-
-  & .btn {
+  .btn {
     padding: 5px 20px;
     background-color: var(--white);
     border: none;
@@ -65,5 +65,13 @@ li {
       background-color: var(--green-3);
       color: var(--white);
     }
+  }
+}
+
+p {
+  & a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
   }
 }

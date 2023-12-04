@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import styles from "./Auth.module.css";
-import { Link, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string, number, ref } from "yup";
+import { Link, useLocation } from "react-router-dom";
+import styles from "./Auth.module.css";
 import { toast } from "react-toastify";
 import { PasswordInput } from "../../Components/PasswordInput/PasswordInput";
+import { useAuthContext } from "./AuthContext";
 
 const commonSchema = {
   email: string()
@@ -33,12 +33,7 @@ const registerSchema = object({
 });
 
 const Auth = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const toggleVisibility = () => {
-    setIsVisible(!isVisible);
-  };
-
+  
   const { pathname } = useLocation();
   let isRegister = false;
   if (pathname === "/register") {
@@ -53,6 +48,8 @@ const Auth = () => {
     resolver: yupResolver(isRegister ? registerSchema : loginSchema),
   });
 
+  const { login } = useAuthContext();
+
   async function submitForm(values) {
     const { retypePassword, ...dataForServer } = values;
 
@@ -66,20 +63,18 @@ const Auth = () => {
         body: JSON.stringify(dataForServer),
       }
     ).then(async (res) => {
-      const data = res.json();
-      // if (res.status >= 400 && res.status < 500) {
-      //   const message = await data;
-      //   toast.error(message);
-      // }
+      const data = await res.json();
+      console.log(data);
       return data;
     });
-    if (!data.accesToken) {
+
+    if (!data.accessToken) {
       toast.error(data);
       return;
     }
 
     toast.success("You have logged in succesfully");
-    console.log(data);
+    login(data);
   }
 
   return (
@@ -97,16 +92,21 @@ const Auth = () => {
           {...register("email")}
           id="email"
           placeholder="Enter your email..."
+          className={errors.email ? styles.error : ""}
         />
         {errors.email && (
-          <p className="error_message">{errors.email.message}</p>
+          <p className={styles.error_message}>{errors.email.message}</p>
         )}
 
         <label htmlFor="password">Password:</label>
-        <PasswordInput name="password" {...register("password")} />
+        <PasswordInput
+          name="password"
+          {...register("password")}
+          className={errors.password ? styles.error : ""}
+        />
 
         {errors.password && (
-          <p className="error_message">{errors.password.message}</p>
+          <p className={styles.error_message}>{errors.password.message}</p>
         )}
 
         {isRegister && (
@@ -115,10 +115,13 @@ const Auth = () => {
             <PasswordInput
               name="retypePassword"
               {...register("retypePassword")}
+              className={errors.retypePassword ? styles.error : ""}
             />
 
             {errors.retypePassword && (
-              <p className="error_message">{errors.retypePassword.message}</p>
+              <p className={styles.error_message}>
+                {errors.retypePassword.message}
+              </p>
             )}
 
             <label htmlFor="firstName">First Name:</label>
@@ -127,9 +130,10 @@ const Auth = () => {
               id="firstName"
               {...register("firstName")}
               placeholder="Enter your first name..."
+              className={errors.firstName ? styles.error : ""}
             />
             {errors.firstName && (
-              <p className="error_message">{errors.firstName.message}</p>
+              <p className={styles.error_message}>{errors.firstName.message}</p>
             )}
 
             <label htmlFor="lastName">Last Name:</label>
@@ -138,9 +142,10 @@ const Auth = () => {
               id="lastName"
               {...register("lastName")}
               placeholder="Enter your last name..."
+              className={errors.lastName ? styles.error : ""}
             />
             {errors.lastName && (
-              <p className="error_message">{errors.lastName.message}</p>
+              <p className={styles.error_message}>{errors.lastName.message}</p>
             )}
 
             <label htmlFor="phone">Phone:</label>
@@ -150,9 +155,10 @@ const Auth = () => {
               id="phone"
               {...register("phone")}
               placeholder="Enter your phone number..."
+              className={errors.phone ? styles.error : ""}
             />
             {errors.phone && (
-              <p className="error_message">{errors.phone.message}</p>
+              <p className={styles.error_message}>{errors.phone.message}</p>
             )}
           </>
         )}

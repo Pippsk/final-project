@@ -1,20 +1,12 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstName": "Andrei",
+      "email": "popescu.andreisk@yahoo.com",
+      "password": "$2a$10$P1rnnZgO0Djv87vPRCyfyOjZLy3U5qEuS38lhd8bR9dS0HvSOp2.K",
+      "phone": 726208727,
       "lastName": "Popescu",
-      "email": "popescu@yahoo.com",
-      "password": "blabla"
-    },
-    {
-      "email": "tud@yahoo.com",
-      "password": "$2a$10$hFQnO8pjN5RE8cqqBUNTeOhxbhJUnqdbZYtciqfFgnKymd0Gz0c72",
-      "firstName": "Sergiu",
-      "lastName": "Tud",
-      "retypePassword": "alabala",
-      "phone": "0726384934",
-      "id": 2
+      "firstName": "andrei",
+      "id": 1
     }
   ]
 }

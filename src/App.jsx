@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { AuthContextProvider } from "./Pages/Auth/AuthContext";
 import Home from "./Pages/Home/Home";
 import HomeLayout from "./Layouts/HomeLayout/HomeLayout";
 import Products from "./Pages/Products/Products";
@@ -13,21 +14,33 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomeLayout />}>
-          <Route index element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="about" element={<About />} />
-          <Route path="services" element={<Services />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="login" element={<Auth />} />
-          <Route path="register" element={<Auth />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <ToastContainer />
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeLayout />}>
+            <Route index element={<Home />} />
+            <Route path="products" element={<Products />} />
+            <Route path="about" element={<About />} />
+            <Route path="services" element={<Services />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="login" element={<Auth />} />
+            <Route path="register" element={<Auth />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          theme="light"
+        />
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 

@@ -29,6 +29,7 @@ label {
 
 input {
   padding: 0.3rem 0.5rem;
+  outline: none;
 }
 
 .button_container {
@@ -71,4 +72,12 @@ p {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+}
+
+.error_message {
+  color: var(--error);
+}
+
+.error {
+  border-color: var(--error);
 }
