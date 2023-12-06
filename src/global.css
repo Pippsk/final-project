@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 :root {
   --white: #fff;
   --green-1: #386641;
@@ -18,4 +20,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+
+img {
+  width: 100%;
 }

@@ -1,0 +1,30 @@
+.homePage_container {
+  width: 70vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  place-items: center;
+  margin-top: 3rem;
+
+  & h1 {
+    margin-bottom: 1rem;
+  }
+
+  & p {
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+}
+
+.btn {
+  padding: 5px 24px;
+  border: none;
+  border-radius: 5px;
+  background-color: coral;
+
+  & a {
+    text-decoration: none;
+    color: aliceblue;
+  }
+}

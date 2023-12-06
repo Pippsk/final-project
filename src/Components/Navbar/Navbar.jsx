@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-
-import styles from "./Navbar.module.css";
 import { useAuthContext } from "../../Pages/Auth/AuthContext";
+import profileImg from "../../assets/profile-img.png";
+import styles from "./Navbar.module.css";
+import { RiShoppingCartLine } from "react-icons/ri";
 
 const BrandNavLink = ({ children, ...props }) => {
   return (
@@ -22,19 +23,18 @@ const Navbar = () => {
     <nav>
       <div className={styles.nav_center}>
         <Link to="/" className={styles.logo}>
-          LOGO
+          ComfortZone
         </Link>
         <ul className={styles.links_container}>
+          <li>
+            <BrandNavLink to="/">Home</BrandNavLink>
+          </li>
           <li>
             <BrandNavLink to="/products">Products</BrandNavLink>
           </li>
 
           <li>
             <BrandNavLink to="/about">About Us</BrandNavLink>
-          </li>
-
-          <li>
-            <BrandNavLink to="/services">Services</BrandNavLink>
           </li>
 
           <li>
@@ -53,21 +53,32 @@ const Navbar = () => {
         )}
 
         {user && (
-          <div className={styles.buttons_container}>
-            <p className={styles.welcome}>
-              <Link>Welcome {user.firstName}!</Link>
-            </p>
-            <Link to="login">
-              <button
-                className={styles.btn}
-                onClick={(e) => {
-                  e.preventDefault();
-                  logout();
-                }}
-              >
-                Sign Out
-              </button>
+          <div className={styles.profile_section}>
+            <div className={styles.cart_container}>
+              <Link to="/cart" className={styles.cart_link}>
+                <span className={styles.cart_wrapper}>
+                  <RiShoppingCartLine />
+                  <span className={styles.cart_value}>2</span>
+                </span>
+              </Link>
+            </div>
+
+            <Link to="/profile" className={styles.profile_link}>
+              <img src={profileImg} alt="" className={styles.profile_img} />{" "}
+              <p>
+                {user.lastName} {user.firstName}
+              </p>
             </Link>
+
+            <button
+              className={styles.logout}
+              onClick={(e) => {
+                e.preventDefault();
+                logout();
+              }}
+            >
+              <Link to="login">Sign Out</Link>
+            </button>
           </div>
         )}
       </div>

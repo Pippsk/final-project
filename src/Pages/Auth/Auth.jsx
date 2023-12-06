@@ -33,7 +33,6 @@ const registerSchema = object({
 });
 
 const Auth = () => {
-  
   const { pathname } = useLocation();
   let isRegister = false;
   if (pathname === "/register") {

@@ -9,37 +9,44 @@ import Services from "./Pages/Services/Services";
 import Contact from "./Pages/Contact/Contact";
 import NotFound from "./Pages/NotFound/NotFound";
 import Auth from "./Pages/Auth/Auth";
+import Profile from "./Pages/Profile/Profile";
+import Cart from "./Pages/Cart/Cart";
 
 import "react-toastify/dist/ReactToastify.min.css";
+import { ProductsProvider } from "./Context/ProductsContext";
+import SingleProduct from "./Pages/SingleProduct/SingleProduct";
 
 function App() {
   return (
     <AuthContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomeLayout />}>
-            <Route index element={<Home />} />
-            <Route path="products" element={<Products />} />
-            <Route path="about" element={<About />} />
-            <Route path="services" element={<Services />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="login" element={<Auth />} />
-            <Route path="register" element={<Auth />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          theme="light"
-        />
-      </BrowserRouter>
+      <ProductsProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomeLayout />}>
+              <Route index element={<Home />} />
+              <Route path="products" element={<Products />} />
+              <Route path="/products/:id" element={<SingleProduct />} />
+              <Route path="about" element={<About />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="login" element={<Auth />} />
+              <Route path="register" element={<Auth />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="cart" element={<Cart />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            draggable
+            theme="light"
+          />
+        </BrowserRouter>
+      </ProductsProvider>
     </AuthContextProvider>
   );
 }
