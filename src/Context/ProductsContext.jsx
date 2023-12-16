@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useReducer, createContext } from "react";
 import reducer from "../Reducers/ProductsReducer";
 import { productsUrl } from "../Utils/constants";
+import { useAuthContext } from "../Pages/Auth/AuthContext";
 
 const initialState = {
   productsLoading: false,
@@ -15,12 +16,17 @@ const ProductsContext = createContext(null);
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { accessToken, user } = useAuthContext();
 
   const getProducts = async (url) => {
     dispatch({ type: "GET_PRODUCTS_START" });
 
     try {
-      const products = await fetch(url).then((res) => res.json());
+      const products = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }).then((res) => res.json());
 
       dispatch({ type: "GET_PRODUCTS_SUCCESS", payload: products });
     } catch (error) {
@@ -38,14 +44,24 @@ export const ProductsProvider = ({ children }) => {
       const singleProduct = await fetch(url).then((res) => res.json());
 
       dispatch({ type: "GET_SINGLE_PRODUCT_SUCCESS", payload: singleProduct });
-      console.log(singleProduct);
     } catch (error) {
       dispatch({ type: "GET_SINGLE_PRODUCT_ERROR" });
     }
   };
 
+  const deleteItem = async () => {
+    const promises = await fetch(
+      `http://localhost:3000/products/${state.singleProduct.id}`,
+      {
+        method: "DELETE",
+      }
+    );
+  };
+
   return (
-    <ProductsContext.Provider value={{ ...state, getSingleProduct }}>
+    <ProductsContext.Provider
+      value={{ ...state, getSingleProduct, getProducts }}
+    >
       {children}
     </ProductsContext.Provider>
   );

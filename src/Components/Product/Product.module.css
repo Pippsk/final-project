@@ -1,9 +1,37 @@
 .product_container {
-  width: 200px;
-  height: 200px;
+  margin-bottom: 2rem;
   display: flex;
+  flex-direction: column;
+
   & img {
+    height: 100%;
     width: 100%;
     display: block;
+    border-radius: 10px;
+  }
+}
+
+span {
+}
+
+.product_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+
+  & h4 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+  }
+
+  & a {
+    text-decoration: none;
+    font-size: 12px;
+    color: var(--green-1);
+    background-color: var(--beige);
+    padding: 5px 10px;
+    border-radius: 10px;
   }
 }

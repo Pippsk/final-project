@@ -1,9 +1,10 @@
-import React from "react";
+import { React } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useAuthContext } from "../../Pages/Auth/AuthContext";
 import profileImg from "../../assets/profile-img.png";
 import styles from "./Navbar.module.css";
 import { RiShoppingCartLine } from "react-icons/ri";
+import { useCartContext } from "../../Context/CartContext";
 
 const BrandNavLink = ({ children, ...props }) => {
   return (
@@ -18,7 +19,7 @@ const BrandNavLink = ({ children, ...props }) => {
 
 const Navbar = () => {
   const { user, logout } = useAuthContext();
-
+  const { totalItems } = useCartContext();
   return (
     <nav>
       <div className={styles.nav_center}>
@@ -58,7 +59,7 @@ const Navbar = () => {
               <Link to="/cart" className={styles.cart_link}>
                 <span className={styles.cart_wrapper}>
                   <RiShoppingCartLine />
-                  <span className={styles.cart_value}>2</span>
+                  <span className={styles.cart_value}>{totalItems}</span>
                 </span>
               </Link>
             </div>

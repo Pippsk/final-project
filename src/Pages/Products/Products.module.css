@@ -1,6 +1,9 @@
-.products_container {
-  width: 100vw;
-  padding: 2rem;
+.products_page {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 200px 1fr;
+  padding: 2rem;
+}
+
+.filter {
+  height: 300px;
 }

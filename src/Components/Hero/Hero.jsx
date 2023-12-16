@@ -21,9 +21,7 @@ const Hero = () => {
         </button>
       </section>
 
-      <section className={styles.image_container}>
-        <img src={homeImg} alt="" />
-      </section>
+      <img src={homeImg} alt="" />
     </div>
   );
 };

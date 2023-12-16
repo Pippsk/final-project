@@ -2,10 +2,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string, number, ref } from "yup";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./Auth.module.css";
 import { toast } from "react-toastify";
 import { PasswordInput } from "../../Components/PasswordInput/PasswordInput";
 import { useAuthContext } from "./AuthContext";
+
+import styles from "./Auth.module.css";
 
 const commonSchema = {
   email: string()
