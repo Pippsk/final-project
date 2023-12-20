@@ -22,3 +22,17 @@
     padding: 10px 0;
   }
 }
+
+.category {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 2px;
+  &:focus {
+    box-shadow: 0 2px 0 var(--green-1);
+  }
+}
+
+.active_link {
+}

@@ -9,12 +9,11 @@ const Hero = () => {
       <section className={styles.text_container}>
         <h1>Design your Comfort Zone</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          magni odit quibusdam! Saepe deleniti id in quis voluptatem dolorem
-          animi suscipit aliquam tempora, ipsum impedit commodi, non at,
-          asperiores numquam natus ab fugiat. Exercitationem, sequi in aliquid
-          voluptate nobis et suscipit cupiditate tenetur tempore, natus
-          quisquam, blanditiis eaque sed praesentium.
+          Bine ai venit la ComfortZone - magazinul online de mobilă care
+          transformă visele tale de amenajare în realitate! Cu o gamă
+          diversificată de mobilier de cea mai înaltă calitate și cele mai
+          recente trenduri în design interior, suntem aici pentru a aduce un
+          plus de eleganță și confort în casa ta.
         </p>
         <button className={styles.btn}>
           <Link to="/products">Shop Now</Link>

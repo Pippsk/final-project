@@ -1,7 +1,7 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProductsContext } from "../../Context/ProductsContext";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Filters.module.css";
 import { useAuthContext } from "../../Pages/Auth/AuthContext";
 
@@ -32,12 +32,19 @@ const Filters = () => {
             <button> Add New Product</button>
           </Link>
         )}
-        <button onClick={() => setSearchParams({ category: "" })}>All</button>
+        <button
+          className={styles.category}
+          onClick={() => setSearchParams({ category: "" })}
+        >
+          All
+        </button>
         {productsCategories.map((category) => (
           <button
             key={category}
+            className={styles.category}
             onClick={() => setSearchParams({ category: `${category}` })}
           >
+            {" "}
             {category}
           </button>
         ))}

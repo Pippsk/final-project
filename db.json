@@ -7,8 +7,15 @@
       "lastName": "Popescu",
       "firstName": "Andrei",
       "id": 1
+    },
+    {
+      "email": "a@a.com",
+      "password": "$2a$10$0kSMW.StvvbZFHKzKAzSeuTKDcUDq0kU36JZn6NBzAd/roGTSNofa",
+      "phone": 726208727,
+      "lastName": "Pit",
+      "firstName": "Brad",
+      "id": 2
     }
-   
   ],
   "products": [
     {
