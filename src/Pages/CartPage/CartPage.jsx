@@ -16,6 +16,7 @@ const CartPage = () => {
 
           <div className={styles.total}>
             <p>Total: ${total}</p>
+            <button className={styles.checkout}>Go to Checkout</button>
             <div className={styles.delete_icon} onClick={clearCart}>
               Clear cart
             </div>

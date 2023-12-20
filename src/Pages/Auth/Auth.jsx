@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string, number, ref } from "yup";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { PasswordInput } from "../../Components/PasswordInput/PasswordInput";
 import { useAuthContext } from "./AuthContext";
@@ -49,6 +49,7 @@ const Auth = () => {
   });
 
   const { login } = useAuthContext();
+  const navigate = useNavigate();
 
   async function submitForm(values) {
     const { retypePassword, ...dataForServer } = values;
@@ -64,7 +65,7 @@ const Auth = () => {
       }
     ).then(async (res) => {
       const data = await res.json();
-      console.log(data);
+      navigate("/");
       return data;
     });
 
@@ -164,7 +165,9 @@ const Auth = () => {
         )}
 
         <div className={styles.button_container}>
-          <button type="submit">{isRegister ? "Register" : "Log In"}</button>
+          <button type="submit" navigate>
+            {isRegister ? "Register" : "Log In"}
+          </button>
         </div>
         {isRegister && (
           <footer>

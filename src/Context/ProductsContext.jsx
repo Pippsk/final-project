@@ -24,6 +24,7 @@ export const ProductsProvider = ({ children }) => {
     try {
       const products = await fetch(url, {
         headers: {
+          "Content-type": "aplication/json",
           Authorization: `Bearer ${accessToken}`,
         },
       }).then((res) => res.json());
@@ -49,18 +50,16 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  const deleteItem = async () => {
-    const promises = await fetch(
-      `http://localhost:3000/products/${state.singleProduct.id}`,
-      {
-        method: "DELETE",
-      }
-    );
+  const deleteItem = async (id) => {
+    await fetch(`http://localhost:3000/products/${id}`, {
+      method: "DELETE",
+    });
+    getProducts(productsUrl);
   };
 
   return (
     <ProductsContext.Provider
-      value={{ ...state, getSingleProduct, getProducts }}
+      value={{ ...state, getSingleProduct, getProducts, deleteItem }}
     >
       {children}
     </ProductsContext.Provider>

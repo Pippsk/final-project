@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string, number } from "yup";
-
 import { useAuthContext } from "../Auth/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useProductsContext } from "../../Context/ProductsContext";
+import { productsUrl } from "../../Utils/constants";
 
 import styles from "./NewProduct.module.css";
 
@@ -29,11 +31,14 @@ const productSchema = object({
 
 const NewProduct = () => {
   const { accessToken } = useAuthContext();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(productSchema) });
+
+  const getProducts = useProductsContext();
 
   const profileForm = async (values) => {
     const data = await fetch("http://localhost:3000/products", {
@@ -44,7 +49,8 @@ const NewProduct = () => {
       },
       body: JSON.stringify(values),
     }).then((res) => res.json());
-
+    navigate("/products");
+    getProducts(productsUrl);
     return data;
   };
   return (

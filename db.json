@@ -3,27 +3,12 @@
     {
       "email": "popescu.andreisk@yahoo.com",
       "password": "$2a$10$P1rnnZgO0Djv87vPRCyfyOjZLy3U5qEuS38lhd8bR9dS0HvSOp2.K",
-      "phone":726208727,
+      "phone": 726208727,
       "lastName": "Popescu",
       "firstName": "Andrei",
       "id": 1
-    },
-    {
-      "email": "a@a.com",
-      "password": "$2a$10$yPDjJdrXuNMiSN4okMCizuTMd0lQ47aDBUouzzT7rlR232JTjYoJO",
-      "phone": 745676543,
-      "lastName": "Pit",
-      "firstName": "brad",
-      "id": 2
-    },
-    {
-      "email": "b@b",
-      "password": "$2a$10$kFEMaF5Z.EhAnLqxORrymu7NnNrdw17k0S37GvqNkhkE6nJSvBNzu",
-      "phone": 726384934,
-      "lastName": "dicaprio",
-      "firstName": "leo",
-      "id": 3
     }
+   
   ],
   "products": [
     {
@@ -372,6 +357,5 @@
       "category": "kitchen",
       "shipping": true
     }
-    
   ]
 }

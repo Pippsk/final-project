@@ -7,7 +7,7 @@ import { useAuthContext } from "../../Pages/Auth/AuthContext";
 import { useCartContext } from "../../Context/CartContext";
 const SingleProduct = () => {
   const { id } = useParams();
-  const { addToCart } = useCartContext;
+  const { addToCart } = useCartContext();
   const { user } = useAuthContext();
 
   const {
@@ -59,10 +59,6 @@ const SingleProduct = () => {
             >
               Add to cart
             </button>
-
-            {user && (
-              <button className={styles.remove_item}>Remove Item</button>
-            )}
           </div>
         </div>
       </div>

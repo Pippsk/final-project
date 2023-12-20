@@ -48,6 +48,7 @@ export const CartProvider = ({ children }) => {
     } else {
       setCart([...cart, newItem]);
     }
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const removeItem = (id) => {

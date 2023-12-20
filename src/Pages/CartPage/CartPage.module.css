@@ -1,6 +1,7 @@
 .total {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 70vw;
   margin: 0 auto;
   padding: 1rem;
@@ -26,4 +27,13 @@
     text-decoration: none;
     color: var(--dark-red);
   }
+}
+
+.checkout {
+  padding: 5px 15px;
+  background-color: var(--green-2);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--white);
 }

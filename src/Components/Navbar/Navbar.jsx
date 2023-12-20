@@ -78,7 +78,7 @@ const Navbar = () => {
                 logout();
               }}
             >
-              <Link to="login">Sign Out</Link>
+              <Link to="/">Sign Out</Link>
             </button>
           </div>
         )}
